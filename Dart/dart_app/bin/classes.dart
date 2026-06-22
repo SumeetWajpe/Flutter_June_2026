@@ -31,3 +31,19 @@ class JamesBondCar extends Car {
     return "${super.accelerate()} , is it armed ? $isArmed";
   }
 }
+
+abstract class Connection {
+  void open();
+  void close();
+}
+
+class OracleConnection extends Connection{
+  2@override
+  void open() {
+    // TODO: implement open
+  }
+  @override
+  void close() {
+    // TODO: implement close
+  }
+}
