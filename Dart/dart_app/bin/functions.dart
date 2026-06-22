@@ -30,3 +30,5 @@ void printBook(String author, String title, [int noOfPages = 200]) {
 // void printBook({String? author, String? title, required int numOfPages}) {
 //   print("$author, $title, $numOfPages");
 // }
+// Arrow Function
+String printName(name) => "Flutter";
