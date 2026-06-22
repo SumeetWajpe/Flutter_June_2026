@@ -22,5 +22,11 @@ void main(List<String> arguments) {
   d = DateTime.now();
 
   // difference - final is a runtime constant & const is compile time constant
-  
+
+  String s = "10";
+  print("Type of s is ${s.runtimeType}");
+  int i = int.parse(s);
+  print(i.runtimeType);
+  print(s);
+  print("Value of s is $s");
 }
