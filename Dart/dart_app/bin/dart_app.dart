@@ -29,4 +29,11 @@ void main(List<String> arguments) {
   print(i.runtimeType);
   print(s);
   print("Value of s is $s");
+
+  // Nullable Types
+  int? j = 100;
+  j = null;
+
+  int? a;
+  print(a);
 }
