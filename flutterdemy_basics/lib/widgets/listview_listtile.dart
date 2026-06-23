@@ -17,6 +17,36 @@ class CoursesWithListTile extends StatelessWidget {
       "JS Server Side FX",
       "https://miro.medium.com/v2/resize:fit:800/1*bc9pmTiyKR0WNPka2w3e0Q.png",
     ),
+    CourseModel(
+      2,
+      "Node",
+      "JS Server Side FX",
+      "https://miro.medium.com/v2/resize:fit:800/1*bc9pmTiyKR0WNPka2w3e0Q.png",
+    ),
+    CourseModel(
+      2,
+      "Node",
+      "JS Server Side FX",
+      "https://miro.medium.com/v2/resize:fit:800/1*bc9pmTiyKR0WNPka2w3e0Q.png",
+    ),
+    CourseModel(
+      2,
+      "Node",
+      "JS Server Side FX",
+      "https://miro.medium.com/v2/resize:fit:800/1*bc9pmTiyKR0WNPka2w3e0Q.png",
+    ),
+    CourseModel(
+      2,
+      "Node",
+      "JS Server Side FX",
+      "https://miro.medium.com/v2/resize:fit:800/1*bc9pmTiyKR0WNPka2w3e0Q.png",
+    ),
+    CourseModel(
+      2,
+      "Node",
+      "JS Server Side FX",
+      "https://miro.medium.com/v2/resize:fit:800/1*bc9pmTiyKR0WNPka2w3e0Q.png",
+    ),
   ];
 
   @override
@@ -24,16 +54,19 @@ class CoursesWithListTile extends StatelessWidget {
     return ListView(
       children: [
         ...listofcourses.map(
-          (course) => ListTile(
-            leading: Image(image: NetworkImage(course.imageUrl!), width: 100),
-            title: Text(course.title!, style: const TextStyle(fontSize: 25)),
-            subtitle: Text(
-              course.subtitle!,
-              style: const TextStyle(fontSize: 15, color: Colors.grey),
-            ),
-            trailing: const Icon(
-              Icons.delete,
-              color: Color.fromARGB(255, 223, 84, 74),
+          (course) => Card(
+            elevation: 5,
+            child: ListTile(
+              leading: Image(image: NetworkImage(course.imageUrl!), width: 100),
+              title: Text(course.title!, style: const TextStyle(fontSize: 25)),
+              subtitle: Text(
+                course.subtitle!,
+                style: const TextStyle(fontSize: 15, color: Colors.grey),
+              ),
+              trailing: const Icon(
+                Icons.delete,
+                color: Color.fromARGB(255, 223, 84, 74),
+              ),
             ),
           ),
         ),
