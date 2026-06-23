@@ -21,6 +21,23 @@ class CoursesWithListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return ListView(
+      children: [
+        ...listofcourses.map(
+          (course) => ListTile(
+            leading: Image(image: NetworkImage(course.imageUrl!), width: 100),
+            title: Text(course.title!, style: const TextStyle(fontSize: 25)),
+            subtitle: Text(
+              course.subtitle!,
+              style: const TextStyle(fontSize: 15, color: Colors.grey),
+            ),
+            trailing: const Icon(
+              Icons.delete,
+              color: Color.fromARGB(255, 223, 84, 74),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
