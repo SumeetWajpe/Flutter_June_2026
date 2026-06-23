@@ -37,8 +37,8 @@ abstract class Connection {
   void close();
 }
 
-class OracleConnection extends Connection{
-  2@override
+class OracleConnection extends Connection {
+  @override
   void open() {
     // TODO: implement open
   }
