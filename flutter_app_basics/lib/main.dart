@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_basics/widgets/Container.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -20,13 +22,15 @@ class MyApp extends StatelessWidget {
           ),
           backgroundColor: Colors.blue,
         ),
-        body: Center(
-          child: Text(
-            "Hello Flutter !",
-            style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-          ),
-        ),
+        body: MyContainer(),
       ),
     );
   }
 }
+
+//  body: Center(
+//           child: Text(
+//             "Hello Flutter !",
+//             style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+//           ),
+//         ),
