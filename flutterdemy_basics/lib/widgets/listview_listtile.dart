@@ -17,36 +17,6 @@ class CoursesWithListTile extends StatelessWidget {
       "JS Server Side FX",
       "https://miro.medium.com/v2/resize:fit:800/1*bc9pmTiyKR0WNPka2w3e0Q.png",
     ),
-    CourseModel(
-      2,
-      "Node",
-      "JS Server Side FX",
-      "https://miro.medium.com/v2/resize:fit:800/1*bc9pmTiyKR0WNPka2w3e0Q.png",
-    ),
-    CourseModel(
-      2,
-      "Node",
-      "JS Server Side FX",
-      "https://miro.medium.com/v2/resize:fit:800/1*bc9pmTiyKR0WNPka2w3e0Q.png",
-    ),
-    CourseModel(
-      2,
-      "Node",
-      "JS Server Side FX",
-      "https://miro.medium.com/v2/resize:fit:800/1*bc9pmTiyKR0WNPka2w3e0Q.png",
-    ),
-    CourseModel(
-      2,
-      "Node",
-      "JS Server Side FX",
-      "https://miro.medium.com/v2/resize:fit:800/1*bc9pmTiyKR0WNPka2w3e0Q.png",
-    ),
-    CourseModel(
-      2,
-      "Node",
-      "JS Server Side FX",
-      "https://miro.medium.com/v2/resize:fit:800/1*bc9pmTiyKR0WNPka2w3e0Q.png",
-    ),
   ];
 
   @override
