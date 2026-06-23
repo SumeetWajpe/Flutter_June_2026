@@ -5,6 +5,7 @@ class RowsCols extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         Container(
           padding: EdgeInsets.all(10),
