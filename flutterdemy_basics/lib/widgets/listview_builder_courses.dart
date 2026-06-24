@@ -31,7 +31,7 @@ class ListViewBuilderBasic_CourseList extends StatelessWidget {
     return ListView.builder(
       itemCount: listofcourses.length,
       itemBuilder: (context, index) {
-        final course = listofcourses[index];
+        var course = listofcourses[index];
         return Card(
           elevation: 5,
           child: ListTile(
@@ -43,9 +43,16 @@ class ListViewBuilderBasic_CourseList extends StatelessWidget {
             ),
             trailing: Column(
               children: [
-                const Icon(
-                  Icons.thumb_up_alt_sharp,
-                  color: Color.fromARGB(255, 74, 154, 223),
+                InkWell(
+                  child: const Icon(
+                    Icons.thumb_up_alt_sharp,
+                    color: Color.fromARGB(255, 74, 154, 223),
+                  ),
+                  onTap: () {
+                    // change the likes
+                    course.likes++;
+                    print("Changing the likes - ${course.likes}");
+                  },
                 ),
                 Text(
                   course.likes.toString(),
