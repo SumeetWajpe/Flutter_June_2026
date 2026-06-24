@@ -5,6 +5,7 @@ class CourseModel {
   final String? title;
   final String? subtitle;
   final String? imageUrl;
+  final int? likes;
 
-  CourseModel(this.id, this.title, this.subtitle, this.imageUrl);
+  CourseModel(this.id, this.title, this.subtitle, this.imageUrl, this.likes);
 }

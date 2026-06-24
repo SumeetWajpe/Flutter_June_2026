@@ -15,6 +15,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "Flutterdemy",
+            style: const TextStyle(color: Colors.white, fontSize: 30),
+          ),
+          backgroundColor: Colors.deepPurpleAccent,
+          centerTitle: true,
+        ),
         // body: CourseListUsingListView()
         // body: CoursesWithListTile(),
         body: ListViewBuilderBasic_CourseList(),

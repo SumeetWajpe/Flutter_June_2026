@@ -9,18 +9,21 @@ class ListViewBuilderBasic_CourseList extends StatelessWidget {
       "React",
       "A JS library",
       "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/3840px-React-icon.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
+      200,
     ),
     CourseModel(
       2,
       "Node",
       "JS Server Side FX",
       "https://miro.medium.com/v2/resize:fit:800/1*bc9pmTiyKR0WNPka2w3e0Q.png",
+      300,
     ),
     CourseModel(
       3,
       "Angular",
       "JS FX",
       "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Angular_gradient_logo.png/960px-Angular_gradient_logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
+      500,
     ),
   ];
   @override
@@ -29,8 +32,36 @@ class ListViewBuilderBasic_CourseList extends StatelessWidget {
       itemCount: listofcourses.length,
       itemBuilder: (context, index) {
         final course = listofcourses[index];
-        return Text(course.title!, style: const TextStyle(fontSize: 30));
+        return Card(
+          elevation: 5,
+          child: ListTile(
+            leading: Image(image: NetworkImage(course.imageUrl!), width: 100),
+            title: Text(course.title!, style: const TextStyle(fontSize: 25)),
+            subtitle: Text(
+              course.subtitle!,
+              style: const TextStyle(fontSize: 15, color: Colors.grey),
+            ),
+            trailing: Column(
+              children: [
+                const Icon(
+                  Icons.thumb_up_alt_sharp,
+                  color: Color.fromARGB(255, 74, 154, 223),
+                ),
+                Text(
+                  course.likes.toString(),
+                  style: const TextStyle(fontSize: 15),
+                ),
+              ],
+            ),
+          ),
+        );
       },
     );
   }
 }
+
+
+//  trailing: const Icon(
+//               Icons.delete,
+//               color: Color.fromARGB(255, 223, 84, 74),
+//             ),
