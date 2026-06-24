@@ -45,23 +45,28 @@ class _CourseListState extends State<CourseList> {
       itemCount: listofcourses.length,
       itemBuilder: (context, index) {
         var course = listofcourses[index];
-        return Card(
-          elevation: 5,
-          child: ListTile(
-            leading: Image(image: NetworkImage(course.imageUrl!), width: 100),
-            title: Text(course.title!, style: const TextStyle(fontSize: 25)),
-            subtitle: Text(
-              course.subtitle!,
-              style: const TextStyle(fontSize: 15, color: Colors.grey),
-            ),
-            trailing: InkWell(
-              child: const Icon(
-                Icons.delete,
-                color: Color.fromARGB(255, 223, 84, 74),
+        return GestureDetector(
+          onHorizontalDragEnd: (_) {
+            deleteACourse(course);
+          },
+          child: Card(
+            elevation: 5,
+            child: ListTile(
+              leading: Image(image: NetworkImage(course.imageUrl!), width: 100),
+              title: Text(course.title!, style: const TextStyle(fontSize: 25)),
+              subtitle: Text(
+                course.subtitle!,
+                style: const TextStyle(fontSize: 15, color: Colors.grey),
               ),
-              onTap: () {
-                deleteACourse(course);
-              },
+              trailing: InkWell(
+                child: const Icon(
+                  Icons.delete,
+                  color: Color.fromARGB(255, 223, 84, 74),
+                ),
+                onTap: () {
+                  deleteACourse(course);
+                },
+              ),
             ),
           ),
         );
