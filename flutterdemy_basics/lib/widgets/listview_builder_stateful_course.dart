@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterdemy_basics/models/course_model.dart';
+import 'package:flutterdemy_basics/screens/course_details.dart';
 
 class CourseList extends StatefulWidget {
   const CourseList({super.key});
@@ -52,7 +53,15 @@ class _CourseListState extends State<CourseList> {
           child: Card(
             elevation: 5,
             child: ListTile(
-              leading: Image(image: NetworkImage(course.imageUrl!), width: 100),
+              leading: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CourseDetails()),
+                  );
+                },
+                child: Image(image: NetworkImage(course.imageUrl!), width: 100),
+              ),
               title: Text(course.title!, style: const TextStyle(fontSize: 25)),
               subtitle: Text(
                 course.subtitle!,
