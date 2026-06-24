@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterdemy_basics/widgets/basic_list_view_courses.dart';
+import 'package:flutterdemy_basics/widgets/listview_builder_courses.dart';
 import 'package:flutterdemy_basics/widgets/listview_listtile.dart';
 
 void main() {
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         // body: CourseListUsingListView()
-        body: CoursesWithListTile(),
+        // body: CoursesWithListTile(),
+        body: ListViewBuilderBasic_CourseList(),
       ),
     );
   }
