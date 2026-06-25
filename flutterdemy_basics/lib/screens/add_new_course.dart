@@ -8,6 +8,7 @@ class AddNewCourse extends StatefulWidget {
 }
 
 class _AddNewCourseState extends State<AddNewCourse> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   int _id = 0;
   String? _title;
 
@@ -18,6 +19,11 @@ class _AddNewCourseState extends State<AddNewCourse> {
         border: OutlineInputBorder(),
       ),
       keyboardType: TextInputType.number,
+      onSaved: (value) {
+        if (value != null && value.isNotEmpty) {
+          _id = int.parse(value);
+        }
+      },
     );
   }
 
@@ -27,7 +33,17 @@ class _AddNewCourseState extends State<AddNewCourse> {
         labelText: "Course Title",
         border: OutlineInputBorder(),
       ),
+      onSaved: (value) {
+        if (value != null && value.isNotEmpty) {
+          _title = (value);
+        }
+      },
     );
+  }
+
+  void _saveCourse() {
+    _formKey.currentState!.save();
+    print("$_id , $_title");
   }
 
   @override
@@ -43,6 +59,7 @@ class _AddNewCourseState extends State<AddNewCourse> {
       ),
       body: SingleChildScrollView(
         child: Form(
+          key: _formKey,
           child: Column(
             children: <Widget>[
               const SizedBox(height: 16),
@@ -50,6 +67,17 @@ class _AddNewCourseState extends State<AddNewCourse> {
               const SizedBox(height: 16),
 
               _buildTitleField(),
+              const SizedBox(height: 16),
+
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    _saveCourse();
+                  },
+                  child: const Text("Save Course"),
+                ),
+              ),
             ],
           ),
         ),
