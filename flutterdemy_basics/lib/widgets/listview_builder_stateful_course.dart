@@ -12,8 +12,6 @@ class CourseList extends StatefulWidget {
 }
 
 class _CourseListState extends State<CourseList> {
-  void deleteACourse(CourseModel course) {}
-
   @override
   Widget build(BuildContext context) {
     return Consumer<CourseListNotifier>(
@@ -23,7 +21,7 @@ class _CourseListState extends State<CourseList> {
           var course = courseListChangeNotifierObj.listofcourses[index];
           return GestureDetector(
             onHorizontalDragEnd: (_) {
-              deleteACourse(course);
+              courseListChangeNotifierObj.deleteACourse(index);
             },
             child: Card(
               elevation: 5,
@@ -56,7 +54,7 @@ class _CourseListState extends State<CourseList> {
                     color: Color.fromARGB(255, 223, 84, 74),
                   ),
                   onTap: () {
-                    deleteACourse(course);
+                    courseListChangeNotifierObj.deleteACourse(index);
                   },
                 ),
               ),
