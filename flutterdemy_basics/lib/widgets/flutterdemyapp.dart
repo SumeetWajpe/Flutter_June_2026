@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterdemy_basics/widgets/listview_builder_stateful_course.dart';
+import 'package:flutterdemy_basics/widgets/total_courses.dart';
 
 class FlutterdemyApp extends StatelessWidget {
   const FlutterdemyApp({super.key});
@@ -15,8 +16,13 @@ class FlutterdemyApp extends StatelessWidget {
         backgroundColor: Colors.deepPurpleAccent,
         centerTitle: true,
       ),
-   
-      body: CourseList(),
+
+      body: Column(
+        children: [
+          Expanded(child: CourseList()),
+          TotalCourseCount(),
+        ],
+      ),
     );
   }
 }
