@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutterdemy_basics/models/course_model.dart';
+import 'package:flutterdemy_basics/models/courselist_changenotifier_mode.dart';
 import 'package:flutterdemy_basics/screens/course_details.dart';
+import 'package:provider/provider.dart';
 
 class CourseList extends StatefulWidget {
   const CourseList({super.key});
@@ -10,55 +12,58 @@ class CourseList extends StatefulWidget {
 }
 
 class _CourseListState extends State<CourseList> {
- 
-  void deleteACourse(CourseModel course) {
-    setState(() {
-      listofcourses.removeWhere((theCourse) => course.id == theCourse.id);
-    });
-  }
+  void deleteACourse(CourseModel course) {}
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: listofcourses.length,
-      itemBuilder: (context, index) {
-        var course = listofcourses[index];
-        return GestureDetector(
-          onHorizontalDragEnd: (_) {
-            deleteACourse(course);
-          },
-          child: Card(
-            elevation: 5,
-            child: ListTile(
-              leading: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => CourseDetails(course),
-                    ),
-                  );
-                },
-                child: Image(image: NetworkImage(course.imageUrl!), width: 100),
-              ),
-              title: Text(course.title!, style: const TextStyle(fontSize: 25)),
-              subtitle: Text(
-                course.subtitle!,
-                style: const TextStyle(fontSize: 15, color: Colors.grey),
-              ),
-              trailing: InkWell(
-                child: const Icon(
-                  Icons.delete,
-                  color: Color.fromARGB(255, 223, 84, 74),
+    return Consumer<CourseListNotifier>(
+      builder: (_, courseListChangeNotifierObj, __) => ListView.builder(
+        itemCount: courseListChangeNotifierObj.listofcourses.length,
+        itemBuilder: (context, index) {
+          var course = courseListChangeNotifierObj.listofcourses[index];
+          return GestureDetector(
+            onHorizontalDragEnd: (_) {
+              deleteACourse(course);
+            },
+            child: Card(
+              elevation: 5,
+              child: ListTile(
+                leading: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CourseDetails(course),
+                      ),
+                    );
+                  },
+                  child: Image(
+                    image: NetworkImage(course.imageUrl!),
+                    width: 100,
+                  ),
                 ),
-                onTap: () {
-                  deleteACourse(course);
-                },
+                title: Text(
+                  course.title!,
+                  style: const TextStyle(fontSize: 25),
+                ),
+                subtitle: Text(
+                  course.subtitle!,
+                  style: const TextStyle(fontSize: 15, color: Colors.grey),
+                ),
+                trailing: InkWell(
+                  child: const Icon(
+                    Icons.delete,
+                    color: Color.fromARGB(255, 223, 84, 74),
+                  ),
+                  onTap: () {
+                    deleteACourse(course);
+                  },
+                ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
