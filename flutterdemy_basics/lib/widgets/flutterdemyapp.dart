@@ -23,6 +23,13 @@ class FlutterdemyApp extends StatelessWidget {
           TotalCourseCount(),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // navigate to NewCourse widget
+        },
+        backgroundColor: Colors.deepPurpleAccent,
+        child: Icon(Icons.add, color: Colors.white),
+      ),
     );
   }
 }
