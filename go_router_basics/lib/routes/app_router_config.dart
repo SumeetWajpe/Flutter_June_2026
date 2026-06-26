@@ -24,10 +24,13 @@ class MyAppRouter {
           },
         ),
         GoRoute(
-          path: "/profile",
+          path: "/profile/:username/:userid",
           name: MyAppRouterContants.profileRouteName,
           builder: (context, state) {
-            return Profile();
+            return Profile(
+              username: state.pathParameters['username']!,
+              userid: state.pathParameters['userid']!,
+            );
           },
         ),
         GoRoute(
