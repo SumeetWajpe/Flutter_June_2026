@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:go_router_basics/pages/about.dart';
 import 'package:go_router_basics/pages/contact.dart';
+import 'package:go_router_basics/pages/error.dart';
 import 'package:go_router_basics/pages/home.dart';
 import 'package:go_router_basics/pages/profile.dart';
 import 'package:go_router_basics/routes/app_routes.constant.dart';
@@ -41,6 +42,9 @@ class MyAppRouter {
           },
         ),
       ],
+      errorBuilder: (context, state) {
+        return ErrorPage(errorMsg: state.error!.message);
+      },
     );
     return router;
   }
