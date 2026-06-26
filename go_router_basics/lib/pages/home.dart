@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -10,7 +11,12 @@ class Home extends StatelessWidget {
       body: Column(
         children: [
           Center(child: const Text("Home")),
-          ElevatedButton(onPressed: () {}, child: Text("Go to About")),
+          ElevatedButton(
+            onPressed: () {
+              GoRouter.of(context).push(Uri(path: "/about").toString());
+            },
+            child: Text("Go to About"),
+          ),
         ],
       ),
     );
