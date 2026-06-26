@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterdemy_basics/screens/add_new_course.dart';
 import 'package:flutterdemy_basics/widgets/listview_builder_stateful_course.dart';
 import 'package:flutterdemy_basics/widgets/total_courses.dart';
 
@@ -26,6 +27,10 @@ class FlutterdemyApp extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // navigate to NewCourse widget
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AddNewCourse()),
+          );
         },
         backgroundColor: Colors.deepPurpleAccent,
         child: Icon(Icons.add, color: Colors.white),

@@ -196,6 +196,8 @@ class _AddNewCourseState extends State<AddNewCourse> {
       context,
       listen: false,
     ).addnewCourse(newCourse);
+
+    Navigator.pop(context);
   }
 
   @override

@@ -65,6 +65,7 @@ class CourseListNotifier extends ChangeNotifier {
 
   void addnewCourse(CourseModel newCourse) {
     // add the course to listofcourses
-    print(newCourse.title);
+    listofcourses.add(newCourse);
+    notifyListeners();
   }
 }
