@@ -3,11 +3,12 @@ import 'package:go_router_basics/pages/about.dart';
 import 'package:go_router_basics/pages/contact.dart';
 import 'package:go_router_basics/pages/error.dart';
 import 'package:go_router_basics/pages/home.dart';
+import 'package:go_router_basics/pages/login.dart';
 import 'package:go_router_basics/pages/profile.dart';
 import 'package:go_router_basics/routes/app_routes.constant.dart';
 
 class MyAppRouter {
-  static GoRouter returnRouter() {
+  static GoRouter returnRouter(bool isAuth) {
     GoRouter router = GoRouter(
       routes: [
         GoRoute(
@@ -41,9 +42,26 @@ class MyAppRouter {
             return ContactUs();
           },
         ),
+        GoRoute(
+          path: "/login",
+          name: MyAppRouterContants.loginRouteName,
+          builder: (context, state) {
+            return Login();
+          },
+        ),
       ],
       errorBuilder: (context, state) {
         return ErrorPage(errorMsg: state.error!.message);
+      },
+      redirect: (context, state) {
+        if (!isAuth &&
+            state.matchedLocation.startsWith(
+              '/${MyAppRouterContants.profileRouteName}',
+            )) {
+          return context.namedLocation(MyAppRouterContants.loginRouteName);
+        } else {
+          return null;
+        }
       },
     );
     return router;

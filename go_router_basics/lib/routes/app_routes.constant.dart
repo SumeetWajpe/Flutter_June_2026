@@ -3,4 +3,5 @@ class MyAppRouterContants {
   static const String aboutRouteName = 'about';
   static const String contactusRouteName = 'contactus';
   static const String profileRouteName = 'profile';
+  static const String loginRouteName = 'login';
 }

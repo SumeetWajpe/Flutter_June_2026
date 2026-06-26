@@ -14,7 +14,7 @@ class Home extends StatelessWidget {
           Center(child: const Text("Home")),
           ElevatedButton(
             onPressed: () {
-              GoRouter.of(context).push(Uri(path: "/bout").toString());
+              GoRouter.of(context).push(Uri(path: "/about").toString());
             },
             child: Text("Go to About"),
           ),
