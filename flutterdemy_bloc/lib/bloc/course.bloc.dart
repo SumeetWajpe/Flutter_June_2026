@@ -96,6 +96,7 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
         ),
       ) {
     on<DeleteCourseEvent>(_deleteCourse);
+    on<IncrementLikesEvent>(_incrementLikes);
   } // events
 
   /// ==========
@@ -104,6 +105,14 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
 
   void _incrementLikes(IncrementLikesEvent event, Emitter<CourseState> emit) {
     // logic to increment likes
+    final updatedCourses = state.courses.map((course) {
+      if (course.id == event.courseId) {
+        // course.likes++; // Mutating the state is not recommended in BLoC. Instead, create a new instance of the course with updated likes.
+        return course.copyWith(likes: course.likes + 1);
+      }
+      return course;
+    }).toList();
+    emit(CourseState(courses: updatedCourses));
   }
 
   /// ==========

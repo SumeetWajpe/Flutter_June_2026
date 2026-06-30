@@ -30,7 +30,14 @@ class CourseWidget extends StatelessWidget {
 
             Row(
               children: [
-                IconButton(onPressed: () {}, icon: const Icon(Icons.thumb_up)),
+                IconButton(
+                  onPressed: () {
+                    context.read<CourseBloc>().add(
+                      IncrementLikesEvent(course.id),
+                    );
+                  },
+                  icon: const Icon(Icons.thumb_up),
+                ),
 
                 Text('${course.likes} Likes'),
 
