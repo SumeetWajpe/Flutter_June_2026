@@ -94,7 +94,9 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
             ),
           ],
         ),
-      ) {} // events
+      ) {
+    on<DeleteCourseEvent>(_deleteCourse);
+  } // events
 
   /// ==========
   /// INCREMENT LIKES HANDLER
@@ -114,6 +116,7 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
         .where((course) => course.id != event.courseId)
         .toList();
 
+    // like notifyListeners()
     emit(CourseState(courses: updatedCourses));
   }
 

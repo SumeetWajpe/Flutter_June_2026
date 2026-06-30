@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterdemy_bloc/bloc/course.bloc.dart';
 import 'package:flutterdemy_bloc/model/course.model.dart';
 
 class CourseWidget extends StatelessWidget {
@@ -36,7 +38,9 @@ class CourseWidget extends StatelessWidget {
 
                 IconButton(
                   onPressed: () {
-                    
+                    context.read<CourseBloc>().add(
+                      DeleteCourseEvent(course.id),
+                    );
                   },
                   icon: const Icon(Icons.delete, color: Colors.red),
                 ),
