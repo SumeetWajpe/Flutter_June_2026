@@ -97,6 +97,7 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
       ) {
     on<DeleteCourseEvent>(_deleteCourse);
     on<IncrementLikesEvent>(_incrementLikes);
+    on<AddCourseEvent>(_addCourse);
   } // events
 
   /// ==========
@@ -116,7 +117,7 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
   }
 
   /// ==========
-  /// INCREMENT LIKES HANDLER
+  /// DELETE COURSE HANDLER
   /// ==========
 
   void _deleteCourse(DeleteCourseEvent event, Emitter<CourseState> emit) {
@@ -130,10 +131,14 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
   }
 
   /// ==========
-  /// INCREMENT LIKES HANDLER
+  /// ADD COURSE HANDLER
   /// ==========
 
   void _addCourse(AddCourseEvent event, Emitter<CourseState> emit) {
     // logic to increment likes
+
+    List<CourseModel> updatedCourses = List.from(state.courses);
+    updatedCourses.add(event.course);
+    emit(CourseState(courses: updatedCourses));
   }
 }
