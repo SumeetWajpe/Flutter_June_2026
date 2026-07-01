@@ -93,9 +93,16 @@ class _TaskListScreenState extends State<TaskListScreen> {
                               ? Icons.check_box
                               : Icons.check_box_outline_blank,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          _toggleTaskList(task);
+                        },
                       ),
-                      IconButton(icon: Icon(Icons.delete), onPressed: () {}),
+                      IconButton(
+                        icon: Icon(Icons.delete),
+                        onPressed: () {
+                          _deleteTask(task.id!);
+                        },
+                      ),
                     ],
                   ),
                 );
@@ -105,5 +112,22 @@ class _TaskListScreenState extends State<TaskListScreen> {
         ],
       ),
     );
+  }
+
+  void _deleteTask(int i) async {
+    await dbHelper.deleteTask(i);
+    _refreshTaskList();
+  }
+
+  void _toggleTaskList(Task task) async {
+    Task updatedTask = Task(
+      id: task.id,
+      title: task.title,
+      description: task.description,
+      isCompleted: !task.isCompleted,
+      createdAt: task.createdAt,
+    );
+    await dbHelper.updateTask(updatedTask);
+    _refreshTaskList();
   }
 }
