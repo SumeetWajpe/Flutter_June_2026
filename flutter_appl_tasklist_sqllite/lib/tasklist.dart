@@ -28,6 +28,20 @@ class _TaskListScreenState extends State<TaskListScreen> {
     });
   }
 
+  void _addTask() async {
+    if (titleController.text.isEmpty) return;
+    await dbHelper.insertTask(
+      Task(
+        title: titleController.text,
+        description: descriptionController.text,
+        createdAt: DateTime.now(),
+      ),
+    );
+    titleController.clear();
+    descriptionController.clear();
+    _refreshTaskList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,21 +67,43 @@ class _TaskListScreenState extends State<TaskListScreen> {
               ],
             ),
           ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: tasks.length,
+              itemBuilder: (context, index) {
+                Task task = tasks[index];
+                return ListTile(
+                  title: Text(
+                    task.title,
+                    style: TextStyle(
+                      decoration: task.isCompleted
+                          ? TextDecoration.lineThrough
+                          : null,
+                    ),
+                  ),
+                  subtitle: task.description != null
+                      ? Text(task.description!)
+                      : null,
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          task.isCompleted
+                              ? Icons.check_box
+                              : Icons.check_box_outline_blank,
+                        ),
+                        onPressed: () {},
+                      ),
+                      IconButton(icon: Icon(Icons.delete), onPressed: () {}),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
-  }
-
-  void _addTask() async {
-    if (titleController.text.isEmpty) return;
-    await dbHelper.insertTask(
-      Task(
-        title: titleController.text,
-        description: descriptionController.text,
-        createdAt: DateTime.now(),
-      ),
-    );
-    titleController.clear();
-    descriptionController.clear();
   }
 }
