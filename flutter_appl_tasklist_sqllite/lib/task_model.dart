@@ -21,4 +21,13 @@ class Task {
       createdAt: DateTime.parse(map['createdAt']),
     );
   }
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'title': title,
+      'description': description,
+      'isCompleted': isCompleted ? 1 : 0,
+      'createdAt': createdAt.toIso8601String(),
+    };
+  }
 }

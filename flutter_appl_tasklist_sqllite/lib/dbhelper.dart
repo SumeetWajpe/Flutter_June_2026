@@ -43,4 +43,12 @@ class DatabaseHelper {
       return Task.fromMap(maps[i]);
     });
   }
+
+  // insertTask
+
+  Future<int> insertTask(Task task) async {
+    await instance.database;
+    final db = await database;
+    return await db.insert('tasks', task.toMap());
+  }
 }
