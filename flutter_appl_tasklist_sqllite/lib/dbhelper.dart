@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter_appl_tasklist_sqllite/task_model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -32,5 +33,14 @@ class DatabaseHelper {
         createdAt TEXT NOT NULL
       )
     ''');
+  }
+
+  Future<List<Task>> getAllTasks() async {
+    await instance.database;
+    final db = await database;
+    final List<Map<String, dynamic>> maps = await db.query('tasks');
+    return List.generate(maps.length, (i) {
+      return Task.fromMap(maps[i]);
+    });
   }
 }

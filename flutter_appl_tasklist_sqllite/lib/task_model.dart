@@ -11,4 +11,14 @@ class Task {
     this.isCompleted = false,
     required this.createdAt,
   });
+
+  factory Task.fromMap(Map<String, dynamic> map) {
+    return Task(
+      id: map['id'],
+      title: map['title'],
+      description: map['description'],
+      isCompleted: map['isCompleted'] == 1,
+      createdAt: DateTime.parse(map['createdAt']),
+    );
+  }
 }
